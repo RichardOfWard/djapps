@@ -44,6 +44,7 @@ class DjangoLoading(TestCase):
 
     def test_0070_import_app_model(self):
         import djapps.app1.models
+        djapps.app1.models
         self.assertIs(
             sys.modules['djapps.app1.models'],
             sys.modules['testproject.apps.app1.models'],
