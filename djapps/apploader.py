@@ -1,6 +1,4 @@
 import sys
-import imp
-from django.conf import settings
 
 
 class AppLoader(object):
@@ -14,7 +12,9 @@ class AppLoader(object):
         sys.meta_path.append(self)
 
     def find_module(self, fullname, path):
-        if fullname.startswith('djapps.'):
+        if fullname == 'djapps.django':
+            return
+        elif fullname.startswith('djapps.'):
             return self
 
     def load_module(self, fullname):
@@ -29,6 +29,7 @@ class AppLoader(object):
 
     def get_app_path(self, name):
         if self.__apps is None:
+            from django.conf import settings
             self.__apps = {}
             for app_path in settings.INSTALLED_APPS:
                 app_name = app_path.split('.')[-1]
