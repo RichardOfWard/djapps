@@ -1,0 +1,12 @@
+language: python
+python:
+    - "2.6"
+    - "2.7"
+env:
+    - DJANGO_NEXT_VERSION=1.4
+    - DJANGO_NEXT_VERSION=1.5
+    - DJANGO_NEXT_VERSION=1.6
+install:
+    - pip install "django<$DJANGO_NEXT_VERSION" --upgrade --use-mirrors
+    - python setup.py install
+script: python setup.py test
