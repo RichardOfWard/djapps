@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 import djapps
 
 setup(
@@ -14,4 +14,4 @@ setup(
     test_suite='testproject.tests',
     tests_require=['django'],
     include_package_data=True,
-) 
+)
